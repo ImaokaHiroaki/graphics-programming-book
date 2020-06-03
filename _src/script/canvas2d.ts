@@ -12,7 +12,6 @@ export class Canvas2dUtility {
     get context(){return this.context2d;}
 
     drawRect(x:number, y:number, width:number, height:number, color:string){
-        // 色が指定されている場合はスタイルを設定する
         if(color != null){
             this.context2d.fillStyle = color;
         }

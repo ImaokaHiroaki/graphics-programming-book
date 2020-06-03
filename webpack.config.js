@@ -1,3 +1,4 @@
+const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 module.exports = {
     // モジュールバンドルを行う起点となるファイルの指定
@@ -21,6 +22,19 @@ module.exports = {
     devServer: {
         // webpack-dev-serverの公開フォルダ
         contentBase: path.join(__dirname,'dist')
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin({
+            terserOptions: {
+              ecma: 6,
+              compress: true,
+              output: {
+                comments: false,
+                beautify: false
+              }
+            }
+          })]
     },
     // モジュールに適用するルールの設定（ここではローダーの設定を行う事が多い）
     module: {
